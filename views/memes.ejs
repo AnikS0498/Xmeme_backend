@@ -1,0 +1,12 @@
+<%-include("partials/header");-%>
+<div class="memefeed">
+    <h1 style="text-align: center;">MemeFeed</h1> <br> <br>
+    <% memes.slice().reverse().forEach((meme)=>{ %>
+        <p><strong><%=meme.memeOwner%></strong></p>
+        <p><em><%=meme.memeCaption%></em></p>
+        <img id="memeImage" src="<%=meme.memeUrl%>" alt="memeImage">
+        <hr>
+    <% }) %>
+</div>
+
+<%-include("partials/footer");-%>

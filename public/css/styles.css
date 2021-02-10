@@ -1,0 +1,53 @@
+body{
+    margin: 0;
+    /* padding-bottom: 58px; */
+    /* position: relative; */
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-container{
+    margin: 50px 300px auto;
+    font-size: 15px;
+}
+
+.memefeed{
+    margin: 50px 300px auto;
+    font-size: 15px;
+}
+
+.footer{
+    /* display: inline-block; */
+    position: fixed;
+    text-align: center;
+    font-size: small;
+    bottom: 0;
+    padding: 1%;
+    width: 100%;
+    height: 6%;
+    background-color: #ccf2f4;
+}
+
+.navbar-nav{
+    position: absolute;
+    right: 0;
+    padding: 10px;
+}
+
+.nav-item{
+    margin: auto 15px;
+}
+
+#memeImage{
+    height: 200px;
+    width: 250px;
+    margin: 20px auto;
+}
+
+hr{
+    border-top: 2px solid black;
+}
+
+.close{
+    line-height: 0;
+}
