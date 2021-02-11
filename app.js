@@ -7,6 +7,8 @@ const Meme = require("./models/memeSchema");
 
 const app = express();
 
+const PORT = process.env.PORT || 8080;
+
 mongoose.connect(process.env.DB_url, {useNewUrlParser: true, useUnifiedTopology: true},()=>{
   console.log("Database connected");
 });
@@ -68,6 +70,6 @@ app.get("/memes/:id", (req, res)=>{
 
 
 //creating a server
-app.listen(process.env.PORT || 8080, ()=>{
+app.listen(PORT || 8080, ()=>{
   console.log(`Server started at port ${PORT}`);
 });
