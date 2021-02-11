@@ -54,13 +54,13 @@ app.post("/memes", async (req, res)=>{
 
 
 //route to get meme of a particular id
-app.get("/:id", (req, res)=>{
+app.get("/memes/:id", (req, res)=>{ 
   Meme.findOne({id: req.params.id},(err, meme)=>{
     if(!err){
       if(meme!=null){
         res.json(meme);
       }else{
-        res.json("Meme with id "+ req.params.memeId+ " is not present");
+        res.json("Meme with id "+ req.params.id+ " is not present");
       }
     }else{
       res.json({message: err});
