@@ -14,9 +14,18 @@ mongoose.connect(process.env.DB_url, {useNewUrlParser: true, useUnifiedTopology:
 });
 
 //Cors options
-const corsOptions = {
-  origin: process.env.Allowed_clients.split(',')
+// var whitelist = ['https://x--meme-frontend.herokuapp.com/', 'http://localhost:3000','http://localhost:8080'];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || ((process.env.Allowed_clients.split(',')).indexOf(origin) !== -1)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
 }
+
+console.log(corsOptions);
 
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
@@ -59,7 +68,7 @@ app.post("/memes", async (req, res)=>{
 
 
 //route to get meme of a particular id
-app.get("/memes/:id", (req, res)=>{ 
+app.get("/memes/:id", (req, res)=>{
   Meme.findOne({id: req.params.id},(err, meme)=>{
     if(!err){
       if(meme!=null){
