@@ -23,6 +23,7 @@ app.get("/", (req, res)=>{
   res.send("In home route");
 });
 
+//route to get all the memes
 app.get("/memes",(req, res)=>{
   console.log("In meme route");
   Meme.find({}, (err, memes)=>{
@@ -35,6 +36,7 @@ app.get("/memes",(req, res)=>{
   });
 });
 
+//post memes to /memes route and saving it to a mongo cloud database
 app.post("/memes", async (req, res)=>{
   console.log(req.body);
   const meme = new Meme({
@@ -50,6 +52,24 @@ app.post("/memes", async (req, res)=>{
   }
 });
 
+
+//route to get meme of a particular id
+app.get("/:id", (req, res)=>{
+  Meme.findOne({id: req.params.id},(err, meme)=>{
+    if(!err){
+      if(meme!=null){
+        res.json(meme);
+      }else{
+        res.json("Meme with id "+ req.params.memeId+ " is not present");
+      }
+    }else{
+      res.json({message: err});
+    }
+  });
+});
+
+
+//creating a server
 app.listen(PORT, ()=>{
   console.log(`Server started at port ${PORT}`);
 });
