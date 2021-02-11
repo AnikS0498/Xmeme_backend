@@ -13,8 +13,13 @@ mongoose.connect(process.env.DB_url, {useNewUrlParser: true, useUnifiedTopology:
   console.log("Database connected");
 });
 
+//Cors options
+const corsOptions = {
+  origin: process.env.Allowed_clients.split(',')
+}
+
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
