@@ -16,8 +16,6 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-const PORT = 8080 || process.env.PORT;
-
 
 app.get("/", (req, res)=>{
   res.send("In home route");
@@ -70,6 +68,6 @@ app.get("/memes/:id", (req, res)=>{
 
 
 //creating a server
-app.listen(PORT, ()=>{
+app.listen(process.env.PORT || 8080, ()=>{
   console.log(`Server started at port ${PORT}`);
 });
