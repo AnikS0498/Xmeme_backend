@@ -61,6 +61,7 @@ app.post("/memes", async (req, res)=>{
   try{
     const savedMeme = await meme.save();
     console.log("Added to db");
+    res.send("Added to db 2");
   }catch(err){
     res.json({messsage: err});
   }
